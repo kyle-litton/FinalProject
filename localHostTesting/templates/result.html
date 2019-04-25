@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+      table, th, td {
+         border: 1px solid black;
+      }
+      </style>
+   </head>
+
+   <body>
+      <h2>RU Classroom</h2>
+      <p>List of empty classrooms:</p>
+
+      <table style="width:70%">
+         {% for key, value in result.items() %}
+         <tr>
+            <th> {{ key }} </th>
+            <td> {{ value }} </td>
+         </tr>
+         {% endfor %}
+      </table>
+
+    </body>
+</html>
