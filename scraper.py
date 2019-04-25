@@ -42,6 +42,42 @@ while count < len(options):
         courseList[dropCount].find_element(By.TAG_NAME, 'img').click()
         dropCount = dropCount+1
 
+        meetingTimeList = [x for x in browser.find_elements_by_css_selector(".sectionMeetingTimesDiv")]
+        numCoursesList = [x for x in browser.find_elements_by_class_name("courseOpenSectionsDenominator")]
+        
+        numStr = numCoursesList[dropCount].text[2:]
+        timeCount = 0
+      
+        while timeCount < int(numStr):
+            time.sleep(1)
+            meetingTimeList = [x for x in browser.find_elements_by_css_selector(".sectionMeetingTimesDiv")]
+            browser.execute_script("arguments[0].scrollIntoView(true);",meetingTimeList[timeCount])
+            dayList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeDay')
+            hoursList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeHours')
+            campusList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeCampus')
+            buildingAndRoomList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeBuildingAndRoom')
+            timeCount = timeCount+1
+
+
+            scrapeCount = 0
+
+            while scrapeCount < len(dayList):
+                dayList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeDay')
+                hoursList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeHours')
+                campusList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeCampus')
+                buildingAndRoomList = meetingTimeList[timeCount].find_elements(By.CLASS_NAME, 'meetingTimeBuildingAndRoom')
+                print(dayList[scrapeCount].text, hoursList[scrapeCount].text, campusList[scrapeCount].text, buildingAndRoomList[scrapeCount].text)
+                scrapeCount = scrapeCount+1
+            
+            print('-----------------')
+
+
+           
+      
+           
+
+
+
     browser.find_element_by_xpath("""//*[@id="widget_dijit_form_FilteringSelect_0"]/div[1]/input""").click()
     
     count = count + 1
