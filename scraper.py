@@ -30,6 +30,17 @@ while count < len(options):
     browser.execute_script("arguments[0].scrollIntoView(true);",options[count])
     options[count].click()
 
+    #get each class list
+    courseList = [x for x in browser.find_elements_by_css_selector(".courseExpandIcon")]
+
+    dropCount = 0
+    while dropCount < len(courseList):
+        
+        time.sleep(1)
+        courseList = [x for x in browser.find_elements_by_css_selector(".courseExpandIcon")]
+        browser.execute_script("arguments[0].scrollIntoView(true);",courseList[dropCount])
+        courseList[dropCount].find_element(By.TAG_NAME, 'img').click()
+        dropCount = dropCount+1
 
     browser.find_element_by_xpath("""//*[@id="widget_dijit_form_FilteringSelect_0"]/div[1]/input""").click()
     
