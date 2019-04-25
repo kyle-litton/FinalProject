@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 #change my name to your username
@@ -19,11 +20,14 @@ options = [x for x in dropDown.find_elements_by_css_selector(".dijitReset.dijitM
 #iterate over each option in drop down menu
 count = 0
 
+
 while count < len(options):
     
-    time.sleep(2)
+    time.sleep(1)
     dropDown = browser.find_element_by_xpath("""//*[@id="dijit_form_FilteringSelect_0_popup"]""")
     options = [x for x in dropDown.find_elements_by_css_selector(".dijitReset.dijitMenuItem")]
+    #this fixes the scroll issue
+    browser.execute_script("arguments[0].scrollIntoView(true);",options[count])
     options[count].click()
 
 
