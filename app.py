@@ -9,14 +9,17 @@ def getForm():
 def result():
    if request.method == 'POST':
       campus = request.form['campus']
+
+      day = request.form['day']
       
       time = request.form['time']
       
       amOrPm = request.form['amOrPm']
+
       
       # send these three variables into the search method which returns an array
       # then send the array of building-room numbers into render_template
-      return render_template("result.html",campus = campus, time = time, amOrPm = amOrPm)
+      return render_template("result.html",campus = campus, day = day, time = time, amOrPm = amOrPm)
 
 if __name__ == '__main__':
    app.run(debug = True)

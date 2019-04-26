@@ -4,29 +4,75 @@
       table, th, td {
          border: 1px solid black;
       }
-      body {background-color:silver}
+      body {background-image: url("https://soe.rutgers.edu/sites/default/files/styles/interior-banner/public/basic/Rutgers%20Week%20Hall%200046.jpg?itok=nw_CDwCi");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-color: rgba(255, 255, 255, 0.35);
+            background-blend-mode: lighten;}
+            
+
       h1 { color: red;
-            font-size: 300%;
+            font-size: 290%;
          }
       p1 { color:black;
             font-size: 150%;
          }
+   
       </style>
    </head>
    <body>
       <form action = "{{ url_for('result') }}" method = "POST">
-         <h1 align="left" > RU Classroom</h1>
-         <p1>Campus: </p1>
-         <select name = "campus" style="width: 150px !important; min-width: 150px; max-width: 150px;">
+         <h1 align="center" > <b>RU Classroom</b></h1>
+         <div align="center">
+         <p1> <b>Campus: </b> 
+         <select name = "campus" style="width: 150px !important; 
+         height: 25px; 
+         text-align-last:center;">
             <option value = "College Ave"> College Ave </option>
             <option value = "Livingston"> Livingston </option>
             <option value = "Busch"> Busch </option>
             <option value = "Cook/Douglass"> Cook/Douglass </option>
-         </select>
-         <p>Time <input name = "time" /></p>
-         <p> AM: <input type = "radio" name = "amOrPm" value = "am" checked /></p>
-         <p> PM: <input type = "radio" name = "amOrPm" value = "pm" /></p>
-         <p><input type = "submit" value = "submit" /></p>
+         </select></p1>
+         <br>
+         <br>
+         <br>
+         <p1> <b>Day: </b> 
+            <select name = "day" style="width: 125px !important; 
+            height: 25px;
+            text-align-last:center;">
+               <option value = "Monday"> Monday </option>
+               <option value = "Tuesday"> Tuesday </option>
+               <option value = "Wednesday"> Wednesday </option>
+               <option value = "Thursday"> Thursday </option>
+               <option value = "Friday"> Friday </option>
+               <option value = "Saturday"> Saturday </option>
+               <option value = "Sunday"> Sunday </option>
+         </select></p1>
+         <br>
+         <br>
+         <br>
+         <p1> <b>Time: </b> 
+         <select name = "time" style="width: 100px !important; 
+         height: 25px;
+         text-align-last:center;">
+            <option value = "1"> 1 </option>
+            <option value = "2"> 2 </option>
+            <option value = "3"> 3 </option>
+            <option value = "4"> 4 </option>
+            <option value = "5"> 5 </option>
+            <option value = "6"> 6 </option>
+            <option value = "7"> 7 </option>
+            <option value = "8"> 8 </option>
+            <option value = "9"> 9 </option>
+            <option value = "10"> 10 </option>
+            <option value = "11"> 11 </option>
+            <option value = "12"> 12 </option>
+         </select></p1>
+         <br>
+         <br>
+         <p> <b>AM: </b> <input type = "radio" name = "amOrPm" value = "am" checked /></p>
+         <p> <b>PM: </b> <input type = "radio" name = "amOrPm" value = "pm" /></p>
+         <p><input type = "submit" value = "Submit" /></p></div>
       </form>
    </body>
 </html>
