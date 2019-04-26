@@ -15,6 +15,7 @@ def result():
       time = request.form['time']
       
       amOrPm = request.form['amOrPm']
+
       
       # send these three variables into the search method which returns an array
       # then send the array of building-room numbers into render_template
