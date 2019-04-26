@@ -8,6 +8,7 @@ import time
 #change my name to your username
 driver_path = "/Users/kylelitton/FinalProject/chromedriver"
 browser = webdriver.Chrome(driver_path)
+f = open("fall2019", "w+")
 
 def moveInView(x):
     browser.execute_script("arguments[0].scrollIntoView(true);",x)
@@ -71,6 +72,8 @@ while count < len(departments):
                 buildingList = [x for x in sectionInfoList[sectionCount].find_elements_by_css_selector(".meetingTimeBuildingAndRoom")]
 
                 print(dayList[meetingCount].text, hourList[meetingCount].text, campusList[meetingCount].text, buildingList[meetingCount].text)
+                newEntry = dayList[meetingCount].text + ' ' + hourList[meetingCount].text + ' ' + campusList[meetingCount].text + ' ' + buildingList[meetingCount].text + "\n"
+                f.write(newEntry)
 
                 meetingCount = meetingCount+1
 
