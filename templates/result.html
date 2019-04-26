@@ -4,7 +4,7 @@
       <style>
       table, th, td {
          border: 0.9px solid black;
-         width: 50%;
+         width: 30%;
       }
       body {background-image: url("https://soe.rutgers.edu/sites/default/files/styles/interior-banner/public/basic/Rutgers%20Week%20Hall%200046.jpg?itok=nw_CDwCi");
             background-size: 100% 370%;
@@ -20,13 +20,15 @@
 
    <body>
       <h1 align="center" > RU Classroom</h1> 
-      <h3 align="center">Here are the empty classrooms on {{ campus }} at {{ time }} {{ amOrPm }} on {{ day }}:</h3>
+      <h3 align="center">Empty classrooms on {{ campus }} at {{ time }} {{ amOrPm }} on {{ day }}:</h3>
       <br>
       <table align="center">
          <tr>
-            <td> <b> Building </b> </td>
-            <td> <b> Room Number </b> </td>
+            <td> <b> Building-Room Number </b> </td>
          </tr>
+         {% for x in rooms %}
+         <tr><td>{{ x }}</td></tr>
+         {% endfor %} 
          <!-- <tr> make a for loop here to pring the values of the array </tr>  -->
          
       </table>
