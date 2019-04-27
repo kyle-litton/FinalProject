@@ -16,10 +16,11 @@ def result():
       
       amOrPm = request.form['amOrPm']
 
-      
+      rooms = ["AB1", "AB2", "AB3", "AB4", "AB5", "AB6", "AB7", "AB8"]
+
       # send these three variables into the search method which returns an array
       # then send the array of building-room numbers into render_template
-      return render_template("result.html",campus = campus, day = day, time = time, amOrPm = amOrPm)
+      return render_template("result.html",campus = campus, day = day, time = time, amOrPm = amOrPm, rooms = rooms)
 
 if __name__ == '__main__':
    app.run(debug = True)
