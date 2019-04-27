@@ -14,7 +14,7 @@ def moveInView(x):
     browser.execute_script("arguments[0].scrollIntoView(true);",x)
 
 browser.get("http://sis.rutgers.edu/soc/#subjects?semester=92019&campus=NB&level=U")
-browser.implicitly_wait(30)
+browser.implicitly_wait(5)
 
 dropButton = browser.find_element_by_xpath("""//*[@id="widget_dijit_form_FilteringSelect_0"]/div[1]/input""")
 dropButton.click()
@@ -58,6 +58,8 @@ while count < len(departments):
             moveInView(sectionInfoList[sectionCount])
 
             classesPerWeek = len([x for x in sectionInfoList[sectionCount].find_elements_by_css_selector(".meetingTimeDay")])
+
+            
             
             #print hours for class
             meetingCount = 0
