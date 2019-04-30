@@ -9,15 +9,15 @@ class classInfo:
 
 
 def compStart(startPair, targetHour, targetMinutes):
-
+	
 	if((startPair[0]>=targetHour) and startPair[1]>targetMinutes):
 		return 0
 	else:
 		 return 1
 
-def compEnd(startPair, targetHour, targetMinutes):
+def compEnd(endPair, targetHour, targetMinutes):
 
-	if((startPair[0]<=targetHour) and startPair[1] < targetMinutes):
+	if((endPair[0]<=targetHour) and endPair[1] < targetMinutes):
 		return 0
 	else:
 		return 1
@@ -44,19 +44,20 @@ def createList():
 		startHour = int(startTime[0])
 		startMinutes = int(startTime[1])
 
-		if word[2] == "AM":
+		if (word[2] == "AM" or startHour == 12):
+
 			startPair = [startHour, startMinutes]
 		else:
 			startHour = startHour + 12
 			startPair = [startHour, startMinutes]
 
-
+	
 		endTime = word[4].split(":")
 		endHour = int(endTime[0])
 		endMinutes = int(endTime[1])
 
 
-		if word[5] == "AM":
+		if (word[5] == "AM" or endHour == 12):
 			endPair = [endHour, endMinutes]
 		else:
 			endHour = endHour + 12
@@ -101,13 +102,16 @@ def checkTime(campus, day, hour, minutes):
 	openRooms = []
 
 	for x in targetCampus:
-	
-		if (x.day == day.upper()) and (compStart(x.start, hour, minutes)==0) and (compEnd(x.end,hour,minutes)==0):
-			
+
+		if x.room not in openRooms:
 			openRooms.append(x.room)
 
+
+	for x in targetCampus:
+		
+		if (x.day == day and ( ((compStart(x.start, hour, minutes)==1) or (compEnd(x.end,hour,minutes)==1) ) )):
+			if x.room in openRooms:
+				openRooms.remove(x.room)
+
 	return openRooms
-
-
-print(checkTime("Livingston", "Monday", 13, 30))		
 
