@@ -8,12 +8,12 @@ import time
 #change my name to your username
 driver_path = "/Users/kylelitton/FinalProject/chromedriver"
 browser = webdriver.Chrome(driver_path)
-f = open("fall2019", "w+")
+f = open("spring2019.txt", "w+")
 
 def moveInView(x):
     browser.execute_script("arguments[0].scrollIntoView(true);",x)
 
-browser.get("http://sis.rutgers.edu/soc/#subjects?semester=92019&campus=NB&level=U")
+browser.get("https://sis.rutgers.edu/soc/#subjects?semester=12019&campus=NB&level=U")
 browser.implicitly_wait(5)
 
 dropButton = browser.find_element_by_xpath("""//*[@id="widget_dijit_form_FilteringSelect_0"]/div[1]/input""")
@@ -23,7 +23,7 @@ dropMenu = browser.find_element_by_xpath("""//*[@id="dijit_form_FilteringSelect_
 
 departments = [x for x in dropMenu.find_elements_by_css_selector(".dijitReset.dijitMenuItem")]
 
-#go through each department
+#go through each department 
 count = 0
 
 while count < len(departments):
@@ -32,13 +32,14 @@ while count < len(departments):
     departments = [x for x in dropMenu.find_elements_by_css_selector(".dijitReset.dijitMenuItem")]
     moveInView(departments[count])
     departments[count].click()
+    time.sleep(5)
 
     courseList = [x for x in browser.find_elements_by_css_selector(".courseExpandIcon")]
 
     #go through each class in the department
     classCount = 0
     while classCount < len(courseList):
-
+        #this can be shortened depending on wifi strength
         time.sleep(1)
         courseList = [x for x in browser.find_elements_by_css_selector(".courseExpandIcon")]
         moveInView(courseList[classCount])
