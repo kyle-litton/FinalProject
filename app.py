@@ -18,10 +18,19 @@ def result():
       
       amOrPm = request.form['amOrPm']
 
+      # cast hour and minutes to ints for the search method
+      # convert to military time
+      if amOrPm == "pm":
+         newHour = int(hour) + 12
+      else:
+         newHour = int(hour)
+
+      newMinutes = int(minutes)
+
+      # rooms = search(campus, day, newHour, newMinutes)
       rooms = ["AB1", "AB2", "AB3", "AB4", "AB5", "AB6", "AB7", "AB8"]
 
-      # send these three variables into the search method which returns an array
-      # then send the array of building-room numbers into render_template
+
       return render_template("result.html",campus = campus, day = day, hour = hour, minutes = minutes, amOrPm = amOrPm, rooms = rooms)
 
 if __name__ == '__main__':
