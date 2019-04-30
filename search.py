@@ -12,14 +12,26 @@ def compStart(startPair, targetHour, targetMinutes):
 	
 	if((startPair[0]>=targetHour) and startPair[1]>targetMinutes):
 		return 0
+
+	elif ((startPair[0]>targetHour) and startPair[1]>=targetMinutes):
+		return 0
+	
 	else:
-		 return 1
+		return 1
 
 def compEnd(endPair, targetHour, targetMinutes):
 
+
 	if((endPair[0]<=targetHour) and endPair[1] < targetMinutes):
+		
 		return 0
+
+	elif((endPair[0]<targetHour) and endPair[1] <= targetMinutes):
+		
+		return 0
+
 	else:
+		
 		return 1
 
 
@@ -63,7 +75,7 @@ def createList():
 			endHour = endHour + 12
 			endPair = [endHour, endMinutes]
 
-
+		
 		campus = word[6]
 
 
@@ -109,7 +121,7 @@ def checkTime(campus, day, hour, minutes):
 
 	for x in targetCampus:
 		
-		if (x.day == day and ( ((compStart(x.start, hour, minutes)==1) or (compEnd(x.end,hour,minutes)==1) ) )):
+		if (x.day == day and ( ((compStart(x.start, hour, minutes)==1) and (compEnd(x.end,hour,minutes)==1) ) )):
 			if x.room in openRooms:
 				openRooms.remove(x.room)
 
