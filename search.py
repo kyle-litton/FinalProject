@@ -10,10 +10,13 @@ class classInfo:
 
 def compStart(startPair, targetHour, targetMinutes):
 	
-	if((startPair[0]>=targetHour) and startPair[1]>targetMinutes):
+	if((startPair[0]>=targetHour) and int(startPair[1])>targetMinutes):
+		
 		return 0
+		
 
-	elif ((startPair[0]>targetHour) and startPair[1]>=targetMinutes):
+	elif ((startPair[0]>targetHour) and int(startPair[1])>=targetMinutes):
+		
 		return 0
 	
 	else:
@@ -22,11 +25,11 @@ def compStart(startPair, targetHour, targetMinutes):
 def compEnd(endPair, targetHour, targetMinutes):
 
 
-	if((endPair[0]<=targetHour) and endPair[1] < targetMinutes):
+	if((endPair[0]<=targetHour) and int(endPair[1]) < targetMinutes):
 		
 		return 0
 
-	elif((endPair[0]<targetHour) and endPair[1] <= targetMinutes):
+	elif((endPair[0]<targetHour) and int(endPair[1]) <= targetMinutes):
 		
 		return 0
 
@@ -54,7 +57,7 @@ def createList():
 
 		startTime = word[1].split(":")
 		startHour = int(startTime[0])
-		startMinutes = int(startTime[1])
+		startMinutes = startTime[1]
 
 		if (word[2] == "AM" or startHour == 12):
 
@@ -66,7 +69,7 @@ def createList():
 	
 		endTime = word[4].split(":")
 		endHour = int(endTime[0])
-		endMinutes = int(endTime[1])
+		endMinutes = endTime[1]
 
 
 		if (word[5] == "AM" or endHour == 12):
@@ -109,7 +112,7 @@ def checkTime(campus, day, hour, minutes):
 	elif campus == "Busch":
 		targetCampus = lst[2]
 	elif campus == "Cook/Douglass":
-		targetCampus == lst[3]
+		targetCampus = lst[3]
 
 	openRooms = []
 
@@ -123,7 +126,23 @@ def checkTime(campus, day, hour, minutes):
 		
 		if (x.day == day and ( ((compStart(x.start, hour, minutes)==1) and (compEnd(x.end,hour,minutes)==1) ) )):
 			if x.room in openRooms:
-				openRooms.remove(x.room)
+				openRooms.remove(x.room)			
 
+
+				
 	return openRooms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
