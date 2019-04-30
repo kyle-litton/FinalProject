@@ -37,6 +37,9 @@ def compEnd(endPair, targetHour, targetMinutes):
 		
 		return 1
 
+def vacant(startPair, endPair, targetHour, targetMinutes):
+	#compStart
+	#compEnd
 
 def createList():
 
@@ -128,8 +131,7 @@ def checkTime(campus, day, hour, minutes):
 			if x.room in openRooms:
 				openRooms.remove(x.room)			
 
-
-				
+		
 	return openRooms
 
 
