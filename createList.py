@@ -1,25 +1,45 @@
 import sys
 
-lines = sys.stdin.readlines()
+file = open("fall2019.txt", "r")
 
-i = 0	
 
-line = lines[i].split(' ')
-print(line)
+for line in file:
 
-while line:
+	word = line.split()
 
-	curr = (line[0]).rstrip("\n")
-   
-	
+	day = word[0]
 
-	i = i + 1
-	
+	startTime = word[1].split(":")
+	startHour = int(startTime[0])
+	startMinutes = int(startTime[1])
+
+	if word[2] == "AM":
+		startPair = [startHour, startMinutes]
+	else:
+		startHour = startHour + 12
+		startPair = [startHour, startMinutes]
+
+
+	endTime = word[4].split(":")
+	endHour = int(endTime[0])
+	endMinutes = int(endTime[1])
+
+
+	if word[5] == "AM":
+		endPair = [endHour, endMinutes]
+	else:
+		endHour = endHour + 12
+		endPair = [endHour, endMinutes]
+
+
+	campus = word[6]
+
 
 	try:
-		
-		line = lines[i].split(' ')
-
+		room = word[7]
 	except:
+		continue 
 
-		break
+
+	
+
