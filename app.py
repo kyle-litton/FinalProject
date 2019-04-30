@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
+from search import checkTime
 app = Flask(__name__)
+
 
 @app.route('/')
 def getForm():
@@ -20,15 +22,15 @@ def result():
 
       # cast hour and minutes to ints for the search method
       # convert to military time
-      if amOrPm == "pm":
-         newHour = int(hour) + 12
-      else:
+      if amOrPm == "am" or hour == "12":
          newHour = int(hour)
+      else:
+         newHour = int(hour) + 12
 
       newMinutes = int(minutes)
 
-      # rooms = search(campus, day, newHour, newMinutes)
-      rooms = ["AB1", "AB2", "AB3", "AB4", "AB5", "AB6", "AB7", "AB8"]
+      rooms = checkTime(campus, day, newHour, newMinutes)
+      
 
 
       return render_template("result.html",campus = campus, day = day, hour = hour, minutes = minutes, amOrPm = amOrPm, rooms = rooms)
