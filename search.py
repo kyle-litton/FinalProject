@@ -8,6 +8,21 @@ class classInfo:
         self.room = room
 
 
+def compStart(startPair, targetHour, targetMinutes):
+
+	if((startPair[0]>=targetHour) and startPair[1]>targetMinutes):
+		return 0
+	else:
+		 return 1
+
+def compEnd(startPair, targetHour, targetMinutes):
+
+	if((startPair[0]<=targetHour) and startPair[1] < targetMinutes):
+		return 0
+	else:
+		return 1
+
+
 def createList():
 
 
@@ -16,7 +31,7 @@ def createList():
 	LIV = []
 	CAC = []
 	BUS = []
-	CookDug = []
+	CookDoug = []
 
 
 	for line in file:
@@ -63,14 +78,36 @@ def createList():
 		elif campus == "BUS":
 			BUS.append(classInfo(day, startPair, endPair, room))
 		elif campus == "D/C":
-			CookDug.append(classInfo(day, startPair, endPair, room))
+			CookDoug.append(classInfo(day, startPair, endPair, room))
 
-	finalList = [LIV,CAC,BUS,CookDug]
+	finalList = [LIV,CAC,BUS,CookDoug]
 
 	return finalList
 
 
+def checkTime(campus, day, hour, minutes):
+
+	lst = createList()
+
+	if campus == "College Ave":
+		targetCampus = lst[1]
+	elif campus == "Livingston":
+		targetCampus = lst[0]
+	elif campus == "Busch":
+		targetCampus = lst[2]
+	elif campus == "Cook/Douglass":
+		targetCampus == lst[3]
+
+	openRooms = []
+
+	for x in targetCampus:
+	
+		if (x.day == day.upper()) and (compStart(x.start, hour, minutes)==0) and (compEnd(x.end,hour,minutes)==0):
+			
+			openRooms.append(x.room)
+
+	return openRooms
 
 
-		
+print(checkTime("Livingston", "Monday", 13, 30))		
 
