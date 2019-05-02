@@ -255,7 +255,7 @@ def checkTime(campus, day, hour, minutes):
 
 		
  
-	return printList
+	return sorted(printList)
 
 
 
