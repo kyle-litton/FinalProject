@@ -37,17 +37,14 @@ def compEnd(endPair, targetHour, targetMinutes):
 		
 		return 1
 
-
-def vacant(startPair, endPair, targetHour, targerMinutes):
-	#compEnd 
-	#compstart 
-
-
+#def vacant(startPair, endPair, targetHour, targetMinutes):
+	#compStart
+	#compEnd
 
 def createList():
 
 
-	file = open("fall2019.txt", "r")
+	file = open("spring2019.txt", "r")
 
 	LIV = []
 	CAC = []
