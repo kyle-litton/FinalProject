@@ -239,9 +239,23 @@ def checkTime(campus, day, hour, minutes):
 	for x in openRooms:
 		
 		retList.append(modifyList(x,targetCampus,day,hour,minutes))
+
+	
+	printList = []
+	for x in retList:
+
+		line = x.split()
+
+		try:
+			time = line[3]
+			printList.append(x)
+		except:
+			x = x + "          open all day      " 
+			printList.append(x)
+
 		
  
-	return retList
+	return printList
 
 
 
