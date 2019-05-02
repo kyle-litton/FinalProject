@@ -152,7 +152,7 @@ def modifyList(x, targetCampus,day, targetHour, targetMinutes):
 
 			if (y.room in x) and (y.day == day):
 				line = x.split()
-				print(line)
+				#print(line)
 				roomNum = line[0]
 				
 				try: 
@@ -178,6 +178,8 @@ def modifyList(x, targetCampus,day, targetHour, targetMinutes):
 						if xhour > 12:
 							xhour = xhour - 12
 							xminute = str(y.start[1]) + " pm "
+						elif xhour == 12:
+							xminute = str(y.start[1]) + " pm "
 						else:
 							xminute = str(y.start[1]) + " am "
 
@@ -193,6 +195,8 @@ def modifyList(x, targetCampus,day, targetHour, targetMinutes):
 						if xhour > 12:
 							xhour = xhour - 12
 							xminute = str(y.start[1]) + " pm "
+						elif xhour == 12:
+							xminute = str(y.start[1]) + " pm "						
 						else:
 							xminute = str(y.start[1]) + " am "
 
@@ -250,7 +254,7 @@ def checkTime(campus, day, hour, minutes):
 			time = line[3]
 			printList.append(x)
 		except:
-			x = x + "          open all day      " 
+			x = x + "          open rest of the day      " 
 			printList.append(x)
 
 		
