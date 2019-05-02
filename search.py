@@ -37,9 +37,12 @@ def compEnd(endPair, targetHour, targetMinutes):
 		
 		return 1
 
-def vacant(startPair, endPair, targetHour, targetMinutes):
-	#compStart
-	#compEnd
+
+def vacant(startPair, endPair, targetHour, targerMinutes):
+	#compEnd 
+	#compstart 
+
+
 
 def createList():
 
