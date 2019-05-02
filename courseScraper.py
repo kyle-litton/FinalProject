@@ -6,7 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 #change my name to your username
-driver_path = "/Users/kylelitton/FinalProject/chromedriver"
+driver_path = "/Users/giannaaprile/Desktop/FinalProject/chromedriver"
 browser = webdriver.Chrome(driver_path)
 f = open("spring2019.txt", "w+")
 
