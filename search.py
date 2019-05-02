@@ -113,7 +113,99 @@ def createList():
 
 	return finalList
 
+def updateUntil(startPair, xhour, xminutes, targetHour, targetMinutes):
+	
+	#print("start ", startPair[0])
+	#print("xhour ", xhour)
+	#print('xmin:', xminutes)
+	#print('targMIn' , targetMinutes)
+	#print("targethour ", targetHour)
+	#print("\n")
 
+	if (startPair[0] == targetHour) and (startPair[1] > targetMinutes):
+	
+		if (startPair[0]==xhour and (startPair[1]<xminutes)) :
+			
+			return 1
+
+		elif (startPair[0]<xhour):
+			
+			return 1
+	
+
+	elif (startPair[0] > targetHour):
+	
+		if (startPair[0]==xhour) and (startPair[1]<xminutes):
+			
+			return 1
+		elif (startPair[0]<xhour):
+			
+			return 1
+	
+	
+	return 0
+
+
+
+def modifyList(x, targetCampus,day, targetHour, targetMinutes):
+	for y in targetCampus:
+
+			if (y.room in x) and (y.day == day):
+				line = x.split()
+				print(line)
+				roomNum = line[0]
+				
+				try: 
+					
+					time = line[3]
+					spl = time.split(":")
+					xhour = int(spl[0])
+					xminute = spl[1]
+					
+					if line[4] == 'pm':
+						if xhour != 12:
+							xhour = xhour + 12
+							
+					
+	
+					#print(xhour,xminute, '|||', y.start[0],y.start[1])
+					if updateUntil(y.start, xhour, xminute, targetHour,targetMinutes) == 1:
+						
+						
+						xhour = y.start[0]
+						xminute = y.start[1]
+
+						if xhour > 12:
+							xhour = xhour - 12
+							xminute = str(y.start[1]) + " pm "
+						else:
+							xminute = str(y.start[1]) + " am "
+
+						x = roomNum + "          open until:       " + str(xhour) + ":" + str(xminute) + y.day
+
+					
+
+				except:
+
+					if (y.start[0] > targetHour and int(y.start[1]) >= int(targetMinutes)) or (y.start[0] >= targetHour and int(y.start[1]) > int(targetMinutes) ):
+						xhour = y.start[0]
+
+						if xhour > 12:
+							xhour = xhour - 12
+							xminute = str(y.start[1]) + " pm "
+						else:
+							xminute = str(y.start[1]) + " am "
+
+						x = roomNum + "          open until:       " + str(xhour) + ":" + str(xminute) + y.day
+
+	return x				
+
+					
+				
+					
+					
+
+		
 def checkTime(campus, day, hour, minutes):
 
 	lst = createList()
@@ -137,29 +229,20 @@ def checkTime(campus, day, hour, minutes):
 
 	for x in targetCampus:
 
-		if x.day == day:
-
-			print(x.start, x.end, hour, minutes)
-
 		if (x.day == day and vacant(x.start, x.end, hour, minutes)==1):
 			
 			if x.room in openRooms:
-				openRooms.remove(x.room)			
+				openRooms.remove(x.room)
 
+	retList = []				
+
+	for x in openRooms:
 		
-	return openRooms
+		retList.append(modifyList(x,targetCampus,day,hour,minutes))
+		
+ 
+	return retList
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+	
