@@ -8,38 +8,48 @@ class classInfo:
         self.room = room
 
 
-def compStart(startPair, targetHour, targetMinutes):
+def vacant(startPair, endPair, targetHour, targetMinutes):
+
+
+	if (startPair[0]<targetHour)  and (endPair[0]>=targetHour):
+
+		if (int(startPair[1])< targetMinutes) or (int(endPair[1])>=targetMinutes):
+			return 1
+		elif (int(startPair[1])<= targetMinutes) or (int(endPair[1])>targetMinutes):
+			return 1	
+		else:	
+			return 0
+
+	elif (startPair[0]<targetHour) and (endPair[0]>targetHour):
 	
-	if((startPair[0]>=targetHour) and int(startPair[1])>targetMinutes):
-		
-		return 0
-		
+		if (int(startPair[1])< targetMinutes) or (int(endPair[1])>=targetMinutes):
+			return 1
+		elif (int(startPair[1])<= targetMinutes) or (int(endPair[1])>targetMinutes):
+			return 1	
+		else:	
+			return 0
 
-	elif ((startPair[0]>targetHour) and int(startPair[1])>=targetMinutes):
-		
-		return 0
+	elif (startPair[0]<=targetHour) and (endPair[0]>targetHour):
 	
-	else:
-		return 1
-
-def compEnd(endPair, targetHour, targetMinutes):
-
-
-	if((endPair[0]<=targetHour) and int(endPair[1]) < targetMinutes):
+		if (int(startPair[1])< targetMinutes) or (int(endPair[1])>=targetMinutes):
+			return 1
+		elif (int(startPair[1])<= targetMinutes) or (int(endPair[1])>targetMinutes):
+			return 1	
+		else:	
+			return 0
+	
+	elif (startPair[0]<=targetHour) and (endPair[0]>=targetHour):
 		
+		if (int(startPair[1])< targetMinutes) or (int(endPair[1])>=targetMinutes):
+			return 1
+		elif (int(startPair[1])<= targetMinutes) or (int(endPair[1])>targetMinutes):
+			return 1	
+		else:	
+			return 0
+			
+	else:
 		return 0
 
-	elif((endPair[0]<targetHour) and int(endPair[1]) <= targetMinutes):
-		
-		return 0
-
-	else:
-		
-		return 1
-
-#def vacant(startPair, endPair, targetHour, targetMinutes):
-	#compStart
-	#compEnd
 
 def createList():
 
@@ -126,8 +136,13 @@ def checkTime(campus, day, hour, minutes):
 
 
 	for x in targetCampus:
-		
-		if (x.day == day and ( ((compStart(x.start, hour, minutes)==1) and (compEnd(x.end,hour,minutes)==1) ) )):
+
+		if x.day == day:
+
+			print(x.start, x.end, hour, minutes)
+
+		if (x.day == day and vacant(x.start, x.end, hour, minutes)==1):
+			
 			if x.room in openRooms:
 				openRooms.remove(x.room)			
 
