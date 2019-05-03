@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from search import checkTime
+
+
 app = Flask(__name__)
 
 
@@ -29,11 +31,11 @@ def result():
 
       newMinutes = int(minutes)
 
-      rooms = checkTime(campus, day, newHour, newMinutes)
+      roomsAndLinks = checkTime(campus, day, newHour, newMinutes)
       
 
 
-      return render_template("result.html",campus = campus, day = day, hour = hour, minutes = minutes, amOrPm = amOrPm, rooms = rooms)
+      return render_template("result.html",campus = campus, day = day, hour = hour, minutes = minutes, amOrPm = amOrPm, list = roomsAndLinks)
 
 if __name__ == '__main__':
    app.run(debug = True)

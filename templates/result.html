@@ -26,8 +26,12 @@
          <tr>
             <td> <b> Building-Room Number </b> </td>
          </tr>
-         {% for x in rooms %}
-         <tr><td>{{ x }}</td></tr>
+         {% for x in list %}
+         <tr>
+            
+            <td><a href="{{x[0]}}">{{x[1]}}</a></td>
+            
+         </tr>
          {% endfor %} 
          <!-- <tr> make a for loop here to pring the values of the array </tr>  -->
          

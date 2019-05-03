@@ -8,6 +8,8 @@ class classInfo:
         self.room = room
 
 
+
+
 def vacant(startPair, endPair, targetHour, targetMinutes):
 
 
@@ -206,7 +208,29 @@ def modifyList(x, targetCampus,day, targetHour, targetMinutes):
 
 					
 				
-					
+
+
+def addRoomLinks(lst):
+
+	roomInfo = open("spring2019rmInfo.txt", "r")
+
+	roomLinks = []
+
+	for line in roomInfo:
+		roomLinks.append(line)
+
+	retLst = []
+	for x in lst:
+		
+		try:
+			split = x.split("-")
+			name = split[0]
+			roomWithLink = ([x for x in roomLinks if name == x.split()[0]][0].split()[1], x )
+			retLst.append(roomWithLink)
+		except:
+			continue
+
+	return retLst				
 					
 
 		
@@ -259,7 +283,7 @@ def checkTime(campus, day, hour, minutes):
 
 		
  
-	return sorted(printList)
+	return addRoomLinks(sorted(printList))
 
 
 
