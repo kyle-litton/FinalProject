@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from search import checkTime
 
 
 app = Flask(__name__)
 
+app.secret_key = "o=*nqy39b+3v^4n80l$ysa^52sskccgf216#yt95t!5m9+gr$o"
 
 @app.route('/')
 def getForm():
@@ -19,8 +20,12 @@ def result():
       hour = request.form['hour']
 
       minutes = request.form['minutes']
-      
-      amOrPm = request.form['amOrPm']
+
+      try:
+         amOrPm = request.form['amOrPm']         
+      except:
+         flash("Select AM or PM")
+         return render_template('my-form.html') 
 
       # cast hour and minutes to ints for the search method
       # convert to military time

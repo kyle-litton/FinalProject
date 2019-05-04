@@ -134,9 +134,17 @@
                <option value = "59"> 59 </option>
             </select></p1>
          <br>
-         <p> <b>AM: </b> <input type = "radio" name = "amOrPm" value = "am" checked /></p>
+         <p> <b>AM: </b> <input type = "radio" name = "amOrPm" value = "am" /></p>
          <p> <b>PM: </b> <input type = "radio" name = "amOrPm" value = "pm" /></p>
-         <p><input type = "submit" value = "Submit" /></p></div>
+         <p><input type = "submit" value = "Submit" /></p>
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            {% for message in messages %}
+               <h3><b>{{messages}}</b></h3>
+            {% endfor %}
+         {% endif %} 
+      {% endwith %}
+   </div>
       </form>
    </body>
 </html>
