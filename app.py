@@ -24,7 +24,7 @@ def result():
       try:
          amOrPm = request.form['amOrPm']         
       except:
-         flash("Select AM or PM")
+         flash("ERROR: Select AM or PM")
          return render_template('my-form.html') 
 
       # cast hour and minutes to ints for the search method
