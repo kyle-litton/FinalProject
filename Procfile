@@ -1,1 +1,1 @@
-web: gunicorn --chdir FinalProject:app
+web: gunicorn hello:app
