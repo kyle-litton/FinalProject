@@ -1,1 +1,1 @@
-web: gunicorn ruclassroom:app
+web: gunicorn FinalProject:app
