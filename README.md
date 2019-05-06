@@ -1,6 +1,9 @@
 # RU Classroom
 Our goal was to create a website where Rutgers students could easily find open classrooms to study in.
 
+- **[RU Classroom](https://ruclassroom.herokuapp.com/)**
+
+
 ## How We Scraped the Course Data
 
 - In order to determine which rooms are empty we first used Selenium to scrape the Rutgers schedule of classes (Link [Here](https://sis.rutgers.edu/soc/#subjects?semester=12019&campus=NB&level=U)). This is all done in the courseScraper.py file. This python prorgram is run once per semester and will scrape all of that semesters class data and store it in a txt file.
@@ -39,6 +42,17 @@ Our goal was to create a website where Rutgers students could easily find open c
 - Neither of us ever have had the chance to build a website before. For this project we decided to use Flask to create our website, and Heroku to host it.
 
 - While neither of us had experiance with Flask or HTML, this project provided an opportunity to learn as much as we can. We were able to create a user friendly website that displays the desired information in clear way. 
+
+- Note: if you want to run app.py to view the website localy, be sure to uncomment 
+  
+  ```
+     #app.run(debug = True)
+  ```
+  Then comment out the following line, this is left for production deployment only
+  
+  ```
+     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+     ```
 
 - **[RU Classroom](https://ruclassroom.herokuapp.com/)**
 
