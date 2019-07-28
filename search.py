@@ -56,7 +56,7 @@ def vacant(startPair, endPair, targetHour, targetMinutes):
 def createList():
 
 
-	file = open("spring2019.txt", "r")
+	file = open("fall2019.txt", "r")
 
 	LIV = []
 	CAC = []

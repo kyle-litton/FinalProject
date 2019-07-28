@@ -8,7 +8,7 @@ import time
 #change my name to your username
 driver_path = "/Users/kylelitton/FinalProject/chromedriver"
 browser = webdriver.Chrome(driver_path)
-f = open("spring2019.txt", "w+")
+f = open("fall2019.txt", "w+")
 
 def moveInView(x):
     browser.execute_script("arguments[0].scrollIntoView(true);",x)
